@@ -394,52 +394,6 @@ export default function Navbar({ projects = [], currentProject }) {
             </IconButton>
           </Tooltip>
 
-          {/* 文档链接 */}
-          <Tooltip title={t('documentation')}>
-            <IconButton
-              href={
-                i18n.language === 'zh-CN' ? 'https://docs.easy-dataset.com/' : 'https://docs.easy-dataset.com/ed/en'
-              }
-              target="_blank"
-              rel="noopener noreferrer"
-              size="small"
-              sx={{
-                bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.15)',
-                color: theme.palette.mode === 'dark' ? 'inherit' : 'white',
-                p: 1,
-                borderRadius: 1.5,
-                '&:hover': {
-                  bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.25)'
-                },
-                mr: 1,
-                marginRight: 0
-              }}
-            >
-              <HelpOutlineIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
-
-          {/* GitHub链接 */}
-          <Tooltip title={t('common.visitGitHub')}>
-            <IconButton
-              onClick={() => window.open('https://github.com/ConardLi/easy-dataset', '_blank')}
-              size="small"
-              sx={{
-                bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.15)',
-                color: theme.palette.mode === 'dark' ? 'inherit' : 'white',
-                p: 1,
-                borderRadius: 1.5,
-                '&:hover': {
-                  bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.25)'
-                }
-              }}
-            >
-              <GitHubIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
-
-          {/* 更新检查器 */}
-          <UpdateChecker />
         </Box>
       </Toolbar>
     </AppBar>

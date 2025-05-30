@@ -1,5 +1,5 @@
 # 使用Node.js 18作为基础镜像
-FROM node:20
+FROM registry.cn-hangzhou.aliyuncs.com/ripper/node:20.14.0-alpine
 
 # 设置工作目录
 WORKDIR /app
@@ -7,14 +7,17 @@ WORKDIR /app
 # 安装pnpm
 RUN npm install -g pnpm@9
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libcairo2-dev \
-    libpango1.0-dev \
-    libjpeg-dev \
-    libgif-dev \
-    librsvg2-dev \
-    && rm -rf /var/lib/apt/lists/*
+# 安装必要的依赖包 (使用apk代替apt-get，因为这是Alpine Linux)
+RUN apk update && apk add --no-cache \
+    build-base \
+    cairo-dev \
+    pango-dev \
+    jpeg-dev \
+    giflib-dev \
+    librsvg-dev \
+    python3 \
+    make \
+    g++
 
 # 复制package.json和package-lock.json
 COPY package.json package-lock.json* ./
